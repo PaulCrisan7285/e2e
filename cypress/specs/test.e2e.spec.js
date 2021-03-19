@@ -54,7 +54,10 @@ describe('Test specs', function () {
     
     it('Date page', function(){
         
-        cy.get(TestLocators.dateInput).type(date);
+        //cy.get(TestLocators.dateInput).type(date);
+        //cy.get(TestLocators.forthPageNextButton).click();
+        cy.get(TestLocators.datePickerButton).click();
+        cy.get(TestLocators.todayButton).click();
         cy.get(TestLocators.forthPageNextButton).click();
     });
 

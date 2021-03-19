@@ -12,8 +12,10 @@ const TestLocators = {
     "forthPageNextButton": '[data-type="control_datetime"] [aria-label="Next"]',
     "securityQuestionDropdown": '[data-component="mixed-dropdown"]',
     "securityQuestion": '[data-value="Name of the first pet"]',
-    'answerInput': '[data-type="text"]',
+    "answerInput": '[data-type="text"]',
     'submitButton': '[data-type="control_mixed"] [aria-label="Submit"]',
+    'datePickerButton': '[aria-label="Calendar icon"]',
+    'todayButton': '[class="button todayButton"]'
 };
 
 export { TestLocators };
