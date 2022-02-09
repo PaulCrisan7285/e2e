@@ -7,7 +7,8 @@ const AboutYouLocators = {
     "basketButton" : '[data-testid="HeaderBasket"]',
 
     //homepage
-
+    "logo" : '[data-testid="HeaderLogo"]',
+    "heroImage": '[data-testid="homePagetopViewPort"] img',
 
     //registration 
     "firstNameInput" : '[data-testid="FirstnameField"]',
@@ -21,10 +22,11 @@ const AboutYouLocators = {
     "loginEmailInput": '[data-testid="EmailField"]',
     "loginPasswordInput": '[data-testid="PasswordField"]',
     "loginButton": '[data-testid="SubmitLogin"]',
+    "loginForm": '[data-testid="LoginFlowWrapper"] form',
 
     //search
     "searchInput" : 'form div input',
-    "searchedProduct1" : '[data-testid="productTile_7593239"]',
+    "searchedProduct" : '[data-testid="productTile_7593239"]',
     "finalPrice" : '[data-testid="finalPrice"]',
     "selectSize" : '[data-testid="sizeFlyoutOpener"]',
 
@@ -44,6 +46,12 @@ class AboutYouPage {
 
         cy.get(AboutYouLocators.headerMenu).click();
         cy.get(AboutYouLocators.userNav).click();
+    }
+
+    checkNumberOfValidationMessages(number) {
+
+        cy.get(AboutYouLocators.validationMessage)
+            .should('have.length', number);  
     }
 
     search(item){
