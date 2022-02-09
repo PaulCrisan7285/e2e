@@ -16,5 +16,15 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+// to use for dummy data
+cy.faker = require('faker');
+
+// to close the cookie consent banner
+const COOKIE_NAME = "OptanonAlertBoxClosed";
+const COOKIE_VALUE = "2022-02-07T19:02:25.799Z";
+
+Cypress.on("window:before:load", window => {
+  window.document.cookie = `${COOKIE_NAME}=${COOKIE_VALUE}`;
+});
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

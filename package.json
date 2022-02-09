@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^9.4.1",
     "cypress-file-upload": "^5.0.2",
     "faker": "^5.4.0"
   }
