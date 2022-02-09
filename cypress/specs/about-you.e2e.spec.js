@@ -26,9 +26,8 @@ describe('About You Critical Path e2e', function () {
     });
 
     it('Registration', function(){
-
-        cy.get(AboutYouLocators.headerMenu).click();
-        cy.get(AboutYouLocators.userNav).click();
+        
+        aboutYouPage.accessRegistrationLoginPage();
 
         //check validation messages are displayed
         cy.get(AboutYouLocators.registerSubmitButton).click();
@@ -59,6 +58,16 @@ describe('About You Critical Path e2e', function () {
         //won't register since is a prod env
         //cy.get(AboutYouLocators.registerSubmitButton).click();
     }); 
+    
+    it.only('Login', function() {
+        
+        aboutYouPage.accessRegistrationLoginPage();
+        cy.get('[data-testid="RegisterAndLoginButtons"] ')
+            .find('[mode="bordered"]')
+            .last()
+            .click();
+        cy.get(AboutYouLocators.loginEmailInput).type(email)
+    });
 
     it('Search', function (){
 
@@ -73,14 +82,34 @@ describe('About You Critical Path e2e', function () {
        
     }); 
 
-    it.only('Cart', function () {
-        
+    it('Cart', function () {
+       
         //search a product
         aboutYouPage.search(searchProduct);
         //select the product
         cy.get(AboutYouLocators.searchedProduct1).click({force:true});
+        //get price from product page
+        cy.get(AboutYouLocators.finalPrice)
+            .invoke('text')
+            .as('price');
         //add to cart
         aboutYouPage.selectSizeAndAddToCard();
-        
+        //access cart
+        cy.get(AboutYouLocators.goToBasket).click();
+        //compare price of product to total basket price
+        cy.get(AboutYouLocators.basketTotalPrice)
+            .invoke('text').then(text =>{
+                expect(text).to.eq(this.price)
+        });
+        //add a second item of the same product
+        cy.get(AboutYouLocators.selectNumberOfItems).select('2').should('have.value', '2');
+        cy.get(AboutYouLocators.basketTotalPrice)
+            .invoke('text').then(text =>{
+                expect(text).not.to.eq(this.price)
+        });
+        //remove product from basket
+        cy.get(AboutYouLocators.removeProductFromBasket).click();
+        cy.get(AboutYouLocators.confirmRemoveProduct).click();
+        cy.contains('gol').should('be.visible');
     });
 });

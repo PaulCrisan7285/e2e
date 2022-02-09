@@ -17,9 +17,14 @@ const AboutYouLocators = {
     "registerSubmitButton" : '[data-testid="RegisterSubmitButton"]',
     "validationMessage" : '[data-testid="ErrorInfoText"]',
 
+    //login
+    "loginEmailInput": '[data-testid="EmailField"]',
+    "loginPasswordInput": '[data-testid="PasswordField"]',
+    "loginButton": '[data-testid="SubmitLogin"]',
+
     //search
     "searchInput" : 'form div input',
-    "searchedProduct1" : '[data-testid="productTile_7594803"]',
+    "searchedProduct1" : '[data-testid="productTile_7593239"]',
     "finalPrice" : '[data-testid="finalPrice"]',
     "selectSize" : '[data-testid="sizeFlyoutOpener"]',
 
@@ -27,10 +32,19 @@ const AboutYouLocators = {
     "addToCart" : '[data-testid="addToBasketButton"]',
     "goToBasket" : '[data-testid="goToBasketButton"]',
     "deleteProduct": '[data-testid="delete"]',
-
+    "basketTotalPrice": '[data-testid="basketTotalsTotalPrice"]',
+    "selectNumberOfItems": '[data-testid="basketProduct-48685333"] select',
+    "removeProductFromBasket": '[data-testid="delete"]',
+    "confirmRemoveProduct": '[data-testid="confirm_delete"]'
     
 }
 class AboutYouPage {
+
+    accessRegistrationLoginPage(){
+
+        cy.get(AboutYouLocators.headerMenu).click();
+        cy.get(AboutYouLocators.userNav).click();
+    }
 
     search(item){
         
