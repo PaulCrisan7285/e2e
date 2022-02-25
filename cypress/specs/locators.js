@@ -26,7 +26,7 @@ const AboutYouLocators = {
 
     //search
     "searchInput" : 'form div input',
-    "searchedProduct" : '[data-testid="productTile_7593239"]',
+    "searchedProduct" : '[role="grid"] a',
     "finalPrice" : '[data-testid="finalPrice"]',
     "selectSize" : '[data-testid="sizeFlyoutOpener"]',
 
@@ -35,7 +35,7 @@ const AboutYouLocators = {
     "goToBasket" : '[data-testid="goToBasketButton"]',
     "deleteProduct": '[data-testid="delete"]',
     "basketTotalPrice": '[data-testid="basketTotalsTotalPrice"]',
-    "selectNumberOfItems": '[data-testid="basketProduct-48685333"] select',
+    "selectNumberOfItems": '[data-testid="basketItemDescription"] select',
     "removeProductFromBasket": '[data-testid="delete"]',
     "confirmRemoveProduct": '[data-testid="confirm_delete"]'
     

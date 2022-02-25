@@ -16,7 +16,6 @@ describe('About You Critical Path e2e', function () {
         cy.viewport('samsung-note9');
         cy.visit('/');
     });
-	
 
     it('Home Page', function(){
 
@@ -40,9 +39,9 @@ describe('About You Critical Path e2e', function () {
         cy.get(AboutYouLocators.registerSubmitButton).click();
         aboutYouPage.checkNumberOfValidationMessages(4);
 
-            //add valid data for registration
+        //add valid data for registration
         cy.get(AboutYouLocators.firstNameInput)
-            .type(firstName)
+            .type(firstName, {force:true})
             .blur()
             .should('have.value', firstName);
         
@@ -60,10 +59,10 @@ describe('About You Critical Path e2e', function () {
 
         aboutYouPage.checkNumberOfValidationMessages(0);
 
-       //won't register since is a prod env POST 403
-       cy.intercept('POST', 'https://grips-web.aboutyou.com/checkout.CheckoutV1/registerWithEmail').as('registerEmail')
-       cy.get(AboutYouLocators.registerSubmitButton).click();
-       cy.wait('@registerEmail').its('response.statusCode').should('eq', 403)
+        //won't register since is a prod env POST 403
+        cy.intercept('POST', 'https://grips-web.aboutyou.com/checkout.CheckoutV1/registerWithEmail').as('registerEmail')
+        cy.get(AboutYouLocators.registerSubmitButton).click();
+        cy.wait('@registerEmail').its('response.statusCode').should('eq', 403)
     }); 
     
     it('Login', function() {
@@ -105,7 +104,7 @@ describe('About You Critical Path e2e', function () {
         //search for a valid product
         aboutYouPage.search(searchKeyword);
         cy.contains(searchKeyword).should('be.visible');
-        cy.get(AboutYouLocators.searchedProduct).should('be.visible');
+        cy.get(AboutYouLocators.searchedProduct).first().should('be.visible');
     }); 
 
     it('Cart', function () {
@@ -114,7 +113,7 @@ describe('About You Critical Path e2e', function () {
         aboutYouPage.search(searchKeyword);
         
         //select the product
-        cy.get(AboutYouLocators.searchedProduct).click({force:true});
+        cy.get(AboutYouLocators.searchedProduct).first().click({force:true});
         
         //get price from product page
         cy.get(AboutYouLocators.finalPrice)
