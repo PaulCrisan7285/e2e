@@ -8,6 +8,14 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 //
+Cypress.Commands.add('confirmCaptcha', function () {
+    cy.get('iframe')
+      .first()
+      .then((recaptchaIframe) => {
+        const body = recaptchaIframe.contents()
+        cy.wrap(body).find('.recaptcha-checkbox-border').should('be.visible').click()
+      })
+  })
 //
 // -- This is a parent command --
 // Cypress.Commands.add("login", (email, password) => { ... })

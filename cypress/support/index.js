@@ -19,9 +19,9 @@ import './commands'
 // to use for dummy data
 cy.faker = require('faker');
 
-// to close the cookie consent banner
-const COOKIE_NAME = "OptanonAlertBoxClosed";
-const COOKIE_VALUE = "2022-02-07T19:02:25.799Z";
+// to accept the cookie consent banner
+const COOKIE_NAME = "ConsentCookie";
+const COOKIE_VALUE = "required:1,functional:1,analytic:1";
 
 Cypress.on("window:before:load", window => {
   window.document.cookie = `${COOKIE_NAME}=${COOKIE_VALUE}`;

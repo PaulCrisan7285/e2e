@@ -5,8 +5,9 @@
       "**/*e2e.spec.js"
    ],
    "blockHosts": ["google-analytics.com", "googletagmanager.com"],
-   "defaultCommandTimeout": 15000,
-   "requestTimeout": 15000,
-   "baseUrl": "https://m.aboutyou.ro",
-   "userAgent": "Mozilla/5.0 (Linux; Android 10; SM-N960U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.87 Mobile Safari/537.36"
+   "defaultCommandTimeout": 30000,
+   "requestTimeout": 30000,
+   "viewportWidth": 1920,
+   "viewportHeight": 1080,
+   "baseUrl": "https://www.sogeti.com/"
 }
